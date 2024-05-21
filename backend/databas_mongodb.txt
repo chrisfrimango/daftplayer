@@ -1,0 +1,495 @@
+//Create database
+use favorites;
+
+//Create a favorites collection
+db.favorites.insertMany([
+ {
+    "favoriteId": 1,
+    "favorite": false,
+    "description": "An introduction to the album, a powerful song with strong emotions.",
+    "date": new Date()
+},
+{
+    "favoriteId": 2,
+    "favorite": false,
+    "description": "A heartfelt ballad about love troubles.",
+    "date": new Date()
+},
+{
+    "favoriteId": 3,
+    "favorite": false,
+    "description": "An upbeat song with a mix of jazz and soul.",
+    "date": new Date()
+},
+{
+    "favoriteId": 4,
+    "favorite": false,
+    "description": "An energetic song with a strong feminist stance.",
+    "date": new Date()
+},
+{
+    "favoriteId": 5,
+    "favorite": false,
+    "description": "A calm and melancholic song about heartbreak.",
+    "date": new Date()
+},
+{
+    "favoriteId": 6,
+    "favorite": false,
+    "description": "A jazzy rendition of a classic love song.",
+    "date": new Date()
+},
+{
+    "favoriteId": 7,
+    "favorite": false,
+    "description": "A love song with a timeless feel.",
+    "date": new Date()
+},
+{
+    "favoriteId": 8,
+    "favorite": false,
+    "description": "An R&B song about being stuck in a destructive relationship.",
+    "date": new Date()
+},
+{
+    "favoriteId": 9,
+    "favorite": false,
+    "description": "A bittersweet ballad about leaving someone.",
+    "date": new Date()
+},
+{
+    "favoriteId": 10,
+    "favorite": false,
+    "description": "A poignant song about longing and loss.",
+    "date": new Date()
+},
+{
+    "favoriteId": 11,
+    "favorite": false,
+    "description": "An exploration of relationship dynamics and jealousy.",
+    "date": new Date()
+},
+{
+    "favoriteId": 12,
+    "favorite": false,
+    "description": "An anthem of independence about taking control of one's life.",
+    "date": new Date()
+},
+{
+    "favoriteId": 13,
+    "favorite": false,
+    "description": "A tribute to art.",
+    "date": new Date()
+},
+{
+    "favoriteId": 14,
+    "favorite": false,
+    "description": "A musical journey through time and space.",
+    "date": new Date()
+},
+{
+    "favoriteId": 15,
+    "favorite": false,
+    "description": "An ode to the human experience.",
+    "date": new Date()
+},
+{
+    "favoriteId": 16,
+    "favorite": false,
+    "description": "A reflective piece on the complexities of modern life.",
+    "date": new Date()
+},
+{
+    "favoriteId": 17,
+    "favorite": false,
+    "description": "An energetic track that fuses rock with electronic beats.",
+    "date": new Date()
+},
+{
+    "favoriteId": 18,
+    "favorite": false,
+    "description": "A song that explores the themes of adventure and discovery.",
+    "date": new Date()
+},
+{
+    "favoriteId": 19,
+    "favorite": false,
+    "description": "A soulful tune about reconciliation and forgiveness.",
+    "date": new Date()
+},
+{
+    "favoriteId": 20,
+    "favorite": false,
+    "description": "A powerful anthem for peace and unity.",
+    "date": new Date()
+},
+{
+    "favoriteId": 21,
+    "favorite": false,
+    "description": "A ballad that speaks to the solitude of night.",
+    "date": new Date()
+},
+{
+    "favoriteId": 22,
+    "favorite": false,
+    "description": "An invigorating song about overcoming challenges.",
+    "date": new Date()
+},
+{
+    "favoriteId": 23,
+    "favorite": false,
+    "description": "A lively pop song with catchy lyrics.",
+    "date": new Date()
+},
+{
+    "favoriteId": 24,
+    "favorite": false,
+    "description": "A reflective acoustic ballad.",
+    "date": new Date()
+},
+{
+    "favoriteId": 25,
+    "favorite": false,
+    "description": "An electronic dance track with vibrant beats.",
+    "date": new Date()
+},
+{
+    "favoriteId": 26,
+    "favorite": false,
+    "description": "A rock anthem with powerful guitar solos.",
+    "date": new Date()
+},
+{
+    "favoriteId": 27,
+    "favorite": false,
+    "description": "A tender duet about enduring love.",
+    "date": new Date()
+},
+{
+    "favoriteId": 28,
+    "favorite": false,
+    "description": "A groovy track inspired by the 70s funk.",
+    "date": new Date()
+},
+{
+    "favoriteId": 29,
+    "favorite": false,
+    "description": "A haunting melody that evokes a sense of mystery.",
+    "date": new Date()
+},
+{
+    "favoriteId": 30,
+    "favorite": false,
+    "description": "An upbeat song celebrating the joys of life.",
+    "date": new Date()
+},
+{
+    "favoriteId": 31,
+    "favorite": false,
+    "description": "A dramatic track with a cinematic scope.",
+    "date": new Date()
+},
+{
+    "favoriteId": 32,
+    "favorite": true,
+    "description": "An intimate song about personal growth.",
+    "date": new Date()
+},
+{
+    "favoriteId": 33,
+    "favorite": false,
+    "description": "A pulsating techno track for the dance floor.",
+    "date": new Date()
+},
+{
+    "favoriteId": 34,
+    "favorite": true,
+    "description": "A country ballad about returning home.",
+    "date": new Date()
+},
+{
+    "favoriteId": 35,
+    "favorite": false,
+    "description": "An indie rock track with a rebellious spirit.",
+    "date": new Date()
+},
+{
+    "favoriteId": 36,
+    "favorite": false,
+    "description": "A folk song that tells a story of times past.",
+    "date": new Date()
+},
+{
+    "favoriteId": 37,
+    "favorite": false,
+    "description": "An orchestral piece filled with grandeur.",
+    "date": new Date()
+},
+{
+    "favoriteId": 38,
+    "favorite": false,
+    "description": "A rhythmic blues number that gets your toes tapping.",
+    "date": new Date()
+},
+{
+    "favoriteId": 39,
+    "favorite": false,
+    "description": "A vibrant reggae tune promoting peace and love.",
+    "date": new Date()
+}
+]);//Create database
+use favorites;
+
+//Create a favorites collection
+db.favorites.insertMany([
+ {
+    "favoriteId": 1,
+    "favorite": false,
+    "description": "An introduction to the album, a powerful song with strong emotions.",
+    "date": new Date()
+},
+{
+    "favoriteId": 2,
+    "favorite": false,
+    "description": "A heartfelt ballad about love troubles.",
+    "date": new Date()
+},
+{
+    "favoriteId": 3,
+    "favorite": false,
+    "description": "An upbeat song with a mix of jazz and soul.",
+    "date": new Date()
+},
+{
+    "favoriteId": 4,
+    "favorite": false,
+    "description": "An energetic song with a strong feminist stance.",
+    "date": new Date()
+},
+{
+    "favoriteId": 5,
+    "favorite": false,
+    "description": "A calm and melancholic song about heartbreak.",
+    "date": new Date()
+},
+{
+    "favoriteId": 6,
+    "favorite": false,
+    "description": "A jazzy rendition of a classic love song.",
+    "date": new Date()
+},
+{
+    "favoriteId": 7,
+    "favorite": false,
+    "description": "A love song with a timeless feel.",
+    "date": new Date()
+},
+{
+    "favoriteId": 8,
+    "favorite": false,
+    "description": "An R&B song about being stuck in a destructive relationship.",
+    "date": new Date()
+},
+{
+    "favoriteId": 9,
+    "favorite": false,
+    "description": "A bittersweet ballad about leaving someone.",
+    "date": new Date()
+},
+{
+    "favoriteId": 10,
+    "favorite": false,
+    "description": "A poignant song about longing and loss.",
+    "date": new Date()
+},
+{
+    "favoriteId": 11,
+    "favorite": false,
+    "description": "An exploration of relationship dynamics and jealousy.",
+    "date": new Date()
+},
+{
+    "favoriteId": 12,
+    "favorite": false,
+    "description": "An anthem of independence about taking control of one's life.",
+    "date": new Date()
+},
+{
+    "favoriteId": 13,
+    "favorite": false,
+    "description": "A tribute to art.",
+    "date": new Date()
+},
+{
+    "favoriteId": 14,
+    "favorite": false,
+    "description": "A musical journey through time and space.",
+    "date": new Date()
+},
+{
+    "favoriteId": 15,
+    "favorite": false,
+    "description": "An ode to the human experience.",
+    "date": new Date()
+},
+{
+    "favoriteId": 16,
+    "favorite": false,
+    "description": "A reflective piece on the complexities of modern life.",
+    "date": new Date()
+},
+{
+    "favoriteId": 17,
+    "favorite": false,
+    "description": "An energetic track that fuses rock with electronic beats.",
+    "date": new Date()
+},
+{
+    "favoriteId": 18,
+    "favorite": false,
+    "description": "A song that explores the themes of adventure and discovery.",
+    "date": new Date()
+},
+{
+    "favoriteId": 19,
+    "favorite": false,
+    "description": "A soulful tune about reconciliation and forgiveness.",
+    "date": new Date()
+},
+{
+    "favoriteId": 20,
+    "favorite": false,
+    "description": "A powerful anthem for peace and unity.",
+    "date": new Date()
+},
+{
+    "favoriteId": 21,
+    "favorite": false,
+    "description": "A ballad that speaks to the solitude of night.",
+    "date": new Date()
+},
+{
+    "favoriteId": 22,
+    "favorite": false,
+    "description": "An invigorating song about overcoming challenges.",
+    "date": new Date()
+},
+{
+    "favoriteId": 23,
+    "favorite": false,
+    "description": "A lively pop song with catchy lyrics.",
+    "date": new Date()
+},
+{
+    "favoriteId": 24,
+    "favorite": false,
+    "description": "A reflective acoustic ballad.",
+    "date": new Date()
+},
+{
+    "favoriteId": 25,
+    "favorite": false,
+    "description": "An electronic dance track with vibrant beats.",
+    "date": new Date()
+},
+{
+    "favoriteId": 26,
+    "favorite": false,
+    "description": "A rock anthem with powerful guitar solos.",
+    "date": new Date()
+},
+{
+    "favoriteId": 27,
+    "favorite": false,
+    "description": "A tender duet about enduring love.",
+    "date": new Date()
+},
+{
+    "favoriteId": 28,
+    "favorite": false,
+    "description": "A groovy track inspired by the 70s funk.",
+    "date": new Date()
+},
+{
+    "favoriteId": 29,
+    "favorite": false,
+    "description": "A haunting melody that evokes a sense of mystery.",
+    "date": new Date()
+},
+{
+    "favoriteId": 30,
+    "favorite": false,
+    "description": "An upbeat song celebrating the joys of life.",
+    "date": new Date()
+},
+{
+    "favoriteId": 31,
+    "favorite": false,
+    "description": "A dramatic track with a cinematic scope.",
+    "date": new Date()
+},
+{
+    "favoriteId": 32,
+    "favorite": true,
+    "description": "An intimate song about personal growth.",
+    "date": new Date()
+},
+{
+    "favoriteId": 33,
+    "favorite": false,
+    "description": "A pulsating techno track for the dance floor.",
+    "date": new Date()
+},
+{
+    "favoriteId": 34,
+    "favorite": true,
+    "description": "A country ballad about returning home.",
+    "date": new Date()
+},
+{
+    "favoriteId": 35,
+    "favorite": false,
+    "description": "An indie rock track with a rebellious spirit.",
+    "date": new Date()
+},
+{
+    "favoriteId": 36,
+    "favorite": false,
+    "description": "A folk song that tells a story of times past.",
+    "date": new Date()
+},
+{
+    "favoriteId": 37,
+    "favorite": false,
+    "description": "An orchestral piece filled with grandeur.",
+    "date": new Date()
+},
+{
+    "favoriteId": 38,
+    "favorite": false,
+    "description": "A rhythmic blues number that gets your toes tapping.",
+    "date": new Date()
+},
+{
+    "favoriteId": 39,
+    "favorite": false,
+    "description": "A vibrant reggae tune promoting peace and love.",
+    "date": new Date()
+}
+]);
+
+// Show all favorites
+db.favorites.find({})
+
+
+
+// Ta bort alla dokument från samlingen 'favorites'
+db.favorites.deleteMany({});
+
+// Show all favorites
+db.favorites.find({})
+
+
+
+// Ta bort alla dokument från samlingen 'favorites'
+db.favorites.deleteMany({});

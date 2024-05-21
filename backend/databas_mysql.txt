@@ -1,0 +1,387 @@
+CREATE DATABASE musicplayer16;
+
+USE musicplayer16;
+
+CREATE TABLE act(
+    actId INT NOT NULL AUTO_INCREMENT,
+    actName VARCHAR(50) UNIQUE,
+    actType VARCHAR(50),
+    UNIQUE (actName),
+    PRIMARY KEY (actId)
+);
+
+CREATE TABLE genre(
+    genreId INT NOT NULL AUTO_INCREMENT,
+    genreName VARCHAR(50) UNIQUE,
+    PRIMARY KEY (genreId)
+);
+
+CREATE TABLE track(
+    trackId INT NOT NULL AUTO_INCREMENT,
+    trackName VARCHAR(100) UNIQUE,
+    fileUrl VARCHAR(250),
+    trackLength INT,
+    trackActId INT,
+    PRIMARY KEY (trackId),
+    FOREIGN KEY (trackActId) REFERENCES act(actId)
+);
+
+CREATE TABLE album(
+    albumId INT NOT NULL AUTO_INCREMENT,
+    albumTitle VARCHAR(50) UNIQUE,
+    albumYear INT,
+    albumActId INT,
+    albumCoverUrl VARCHAR(250),
+    PRIMARY KEY (albumId),
+    FOREIGN KEY (albumActId) REFERENCES act(actId)
+);
+
+CREATE TABLE albumTrack(
+    albumTrackId INT NOT NULL AUTO_INCREMENT,
+    albumTrackT_id INT,
+    albumTrackA_id INT,
+    PRIMARY KEY (albumTrackId),
+    FOREIGN KEY (albumTrackT_id) REFERENCES track(trackId),
+    FOREIGN KEY (albumTrackA_id) REFERENCES album(albumId)
+);
+
+CREATE TABLE albumGenre(
+    albumGenreId INT NOT NULL AUTO_INCREMENT,
+    albumGenreA_id INT,
+    albumGenreG_id INT,
+    PRIMARY KEY (albumGenreId),
+    FOREIGN KEY (albumGenreA_id) REFERENCES album(albumId),
+    FOREIGN KEY (albumGenreG_id) REFERENCES genre(genreId)
+);
+
+CREATE TABLE playlist(
+    playlistId INT NOT NULL AUTO_INCREMENT,
+    playlistName VARCHAR(100) UNIQUE,
+    playlistCreatedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (playlistId)
+);
+
+-- Middle table to connect tracks to playlist
+CREATE TABLE trackPlaylist(
+    trackPlaylistId INT NOT NULL AUTO_INCREMENT,
+    trackPlaylistP_id INT,
+    trackPlaylistT_id INT,
+    PRIMARY KEY (trackPlaylistId),
+    FOREIGN KEY (trackPlaylistP_id) REFERENCES playlist(playlistId),
+    FOREIGN KEY (trackPlaylistT_id) REFERENCES track(trackId)
+);
+
+
+
+
+-- Add artists
+INSERT INTO act (actName, actType)
+VALUES
+('Amy Winehouse', 'Singer-songwriter'),
+('The Stooges', 'Band'),
+('The White Stripes', 'Duo'),
+('Outkast', 'Duo'),
+('Fiona Apple', 'Singer-songwriter'),
+('The Notorious B.I.G', 'Artist'),
+('Black Sabbath', 'Band'),
+('A Tribe Called Quest', 'Group'),
+('The Velvet Underground', 'Band'),
+('Elvis Presley', 'Singer'),
+('Gorillaz', 'Group'),
+('Red Hot Chili Peppers', 'Band');
+
+-- Add genres
+INSERT INTO genre (genreName)
+VALUES
+('Rock'), ('Jazz'), ('Folk'), ('Metal'), ('Hip hop'),('Soul'),
+('Pop'),('Electronic music'), ('Funk'),('Country'),('Alternative'),
+('R&B'),('Hard rock'),('Blues'),('Rap'),('Punk');
+
+-- Add an album
+INSERT INTO album (albumTitle, albumYear, albumActId, albumCoverUrl)
+VALUES
+('Frank', 2003, 1, '/frank_amy.jpg');
+
+-- Add songs to album
+INSERT INTO track(trackName, trackLength, trackActId)
+VALUES
+('Intro / Stronger Than Me', 234, 1),
+('You Sent Me Flying / Cherry', 411, 1),
+('Know You Now', 183, 1),
+('Fuck Me Pumps', 203, 1),
+('I Heard Love Is Blind', 130, 1),
+('Moodys Mood for Love / Teo Licks', 209, 1),
+('(There Is) No Greater Love', 129, 1),
+('In My Bed', 317, 1),
+('Take the Box', 200, 1),
+('October Song', 205, 1),
+('What Is It About Men', 215, 1),
+('Help Yourself', 301, 1),
+('Amy Amy Amy', 255, 1),
+('Outro', 52, 1),
+('Brother', 253, 1),
+('Mr Magic (Through the Smoke)', 237, 1);
+
+
+-- dessa har ja lagt in
+SELECT * FROM track;
+SELECT * FROM act;
+SELECT * FROM playlist;
+SELECT * FROM album;
+
+-- Connect songs to the album
+INSERT INTO albumTrack(albumTrackT_id, albumTrackA_id)
+VALUES
+(1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),
+(11,1),(12,1),(13,1),(14,1),(15,1),(16,1);
+
+-- Add an album
+INSERT INTO album (albumTitle, albumYear, albumActId, albumCoverUrl)
+VALUES
+('The Low End Theory', 1991, 8, '/theend.jpg');
+
+-- Add tracks to the album
+INSERT INTO track(trackName, trackLength, trackActId)
+VALUES
+('Excursions', 235, 8),
+('Buggin Out', 217, 8),
+('Rap Promoter', 133, 8),
+('Butter', 219, 8),
+('Verses from the Abstract (feat. Vinia Mojica & Ron Carter)', 239, 8),
+('Show Business (feat. Diamond D, Lord Jamar & Sadat X)', 233, 8),
+('Vibes and Stuff', 258, 8),
+('Infamous Date Rape', 174, 8),
+('Check the Rhime', 217, 8),
+('Everything Is Far', 178, 8),
+('Jazz (Weve Got)', 235, 8),
+('Skypager', 132, 8),
+('What?', 149, 8),
+('Scenario (feat. Busta Rhymes, Dinco D & Charlie Brown) [LP Mix]', 250, 8);
+
+-- Connect songs to album
+INSERT INTO albumTrack(albumTrackT_id, albumTrackA_id)
+VALUES
+(17, 2),(18, 2),(19, 2),(20, 2),(21, 2),(22, 2),(23, 2),
+(24, 2),(25, 2),(26, 2),(27, 2),(28, 2),(29, 2),(30, 2);
+
+-- Add album
+INSERT INTO album(albumTitle, albumYear, albumActId, albumCoverUrl)
+VALUES
+('Paranoid', 1970, 7, '/paranoid.jpg');
+
+-- Add tracks to the album
+INSERT INTO track(trackName, trackLength, trackActId)
+VALUES
+('War Pigs', 474, 7),
+('Paranoid', 167, 7),
+('Planet Caravan', 268, 7),
+('Iron Man', 354, 7),
+('Electric Funeral', 249, 7),
+('Hand of Doom', 427, 7),
+('Rat Salad', 149, 7),
+('Jack the Stripper / Fairies Wear Boots', 374, 7);
+
+-- Connect songs to album
+INSERT INTO albumTrack(albumTrackT_id, albumTrackA_id)
+VALUES
+(31, 3),(32, 3),(33, 3),(34, 3),(35, 3),(36, 3),(37, 3),
+(38, 3);
+
+INSERT INTO act (actName, actType)
+VALUES
+('Daft Punk', 'Band');
+
+INSERT INTO album(albumTitle, albumYear, albumActId, albumCoverUrl)
+VALUES
+('Discovery', 2001, 13, '/discovery_art.jpg');
+
+INSERT INTO track(trackName, trackLength, trackActId, fileUrl)
+VALUES('High life', 201, 13, '/High_Life.mp3');
+INSERT INTO track(trackName, trackLength, trackActId, fileUrl)
+VALUES('One more time', 320, 13, '/One_More_Time.mp3');
+
+INSERT INTO albumTrack(albumTrackT_id, albumTrackA_id)
+VALUES
+(39,4);
+INSERT INTO albumTrack(albumTrackT_id, albumTrackA_id)
+VALUES
+(40,4);
+
+-- Code that enables deletion of playlist
+ALTER TABLE trackPlaylist
+ADD CONSTRAINT
+FOREIGN KEY (trackPlaylistP_id)
+REFERENCES playlist(playlistId)
+ON DELETE CASCADE,
+ADD CONSTRAINT
+FOREIGN KEY (trackPlaylistT_id)
+REFERENCES track (trackId)
+ON DELETE CASCADE;
+
+-- Create a new playlist
+INSERT INTO playlist(playlistName)
+VALUES
+('newPlaylist1');
+
+-- Add tracks to a playlist
+INSERT INTO trackPlaylist(trackPlaylistP_id, trackPlaylistT_id)
+VALUES
+(1,2),(1,5),(1,10),(1,13),(1,23),(1,25),(1,33),(1,37);
+
+-- Read songs in playlists
+SELECT playlist.playlistName, track.trackName
+FROM track
+INNER JOIN trackPlaylist ON track.trackId = trackPlaylist.trackPlaylistT_id
+INNER JOIN playlist
+ON trackPlaylist.trackPlaylistP_id = playlist.playlistId;
+
+
+-- Create procedure for deleting a playlist
+-- use playlistId in the parameter to delete a playlist
+
+CREATE PROCEDURE delete_playlist(IN p_id INT)
+BEGIN
+    SET autocommit = 0;
+    START TRANSACTION;
+    DELETE FROM trackPlaylist WHERE trackPlaylistP_id = p_id;
+    DELETE FROM playlist WHERE playlistId = p_id;
+    COMMIT;
+    ROLLBACK;
+END;
+-- Syntax for deleting the playlist that was just made
+CALL delete_playlist(1);
+
+CREATE PROCEDURE delete_track_in_playlist(IN p_id INT, IN t_id INT )
+BEGIN
+  SET autocommit = 0;
+    START TRANSACTION;
+    DELETE FROM trackPlaylist WHERE trackPlaylistP_id = p_id AND trackPlaylistT_id = t_id;
+    COMMIT;
+    ROLLBACK;
+END;
+
+CALL delete_track_in_playlist(2,1);
+
+CREATE VIEW albumTracks AS
+SELECT album.albumId, album.albumTitle, track.trackName, track.trackLength, album.albumCoverUrl
+FROM album INNER JOIN albumTrack
+ON album.albumId = albumTrack.albumTrackA_id
+INNER JOIN track
+ON albumTrack.albumTrackT_id = track.trackId;
+
+SELECT * FROM albumTracks;
+
+SELECT * FROM TrackDetails;
+
+CREATE VIEW TrackDetails AS
+SELECT
+    t.trackId,
+    t.trackName,
+    a.actName,
+    al.albumTitle,
+    t.trackLength
+FROM
+    track t
+        JOIN
+    act a ON t.trackActId = a.actId
+        JOIN
+    albumTrack at ON t.trackId = at.albumTrackT_id
+        JOIN
+    album al ON at.albumTrackA_id = al.albumId;
+
+
+
+
+
+
+CALL add_track_to_playlist(2,39);
+
+CREATE  PROCEDURE add_track_to_playlist(IN p_id INT, IN t_id INT)
+BEGIN
+INSERT INTO trackPlaylist(trackPlaylistP_id, trackPlaylistT_id)
+VALUES
+(p_id, t_id);
+END;
+
+
+
+SELECT * FROM album;
+
+
+CREATE PROCEDURE get_playlistTracks(IN p_name VARCHAR(100))
+    BEGIN
+  SELECT playlist.playlistName, track.trackName, act.actName, album.albumTitle, track.trackLength, playlist.playlistCreatedDate
+  FROM track
+  JOIN trackPlaylist ON track.trackId = trackPlaylist.trackPlaylistT_id
+  JOIN act ON track.trackActId = act.actId
+  JOIN album ON album.albumActId = act.actId
+  JOIN albumTrack a on track.trackId = a.albumTrackT_id
+  JOIN playlist
+  ON trackPlaylist.trackPlaylistP_id = playlist.playlistId
+WHERE playlist.playlistName LIKE CONCAT('%', p_name, '%');
+  END;
+
+CALL get_playlistTracks('Best of olle');
+
+CREATE PROCEDURE get_playlistData(IN p_name VARCHAR(100))
+    BEGIN
+  SELECT playlist.playlistName, playlist.playlistId, track.trackName, track.trackId, act.actName, album.albumTitle, album.albumCoverUrl, track.trackLength, playlist.playlistCreatedDate
+  FROM track
+  JOIN trackPlaylist ON track.trackId = trackPlaylist.trackPlaylistT_id
+  JOIN act ON track.trackActId = act.actId
+  JOIN album ON album.albumActId = act.actId
+  JOIN albumTrack a on track.trackId = a.albumTrackT_id
+  JOIN playlist
+  ON trackPlaylist.trackPlaylistP_id = playlist.playlistId
+WHERE playlist.playlistName LIKE CONCAT('%', p_name, '%');
+  END;
+
+CALL get_playlistData('Best of olle');
+
+DROP PROCEDURE IF EXISTS get_playlistData;
+
+
+CREATE PROCEDURE get_albumData(IN a_name VARCHAR(100))
+    BEGIN
+  SELECT track.trackName, act.actName, album.albumTitle, album.albumCoverUrl, track.trackLength, track.fileUrl, track.trackId
+  FROM track
+  JOIN act ON track.trackActId = act.actId
+  JOIN album ON album.albumActId = act.actId
+  JOIN albumTrack a on track.trackId = a.albumTrackT_id
+WHERE album.albumTitle LIKE CONCAT('%', a_name, '%');
+  END;
+
+DROP PROCEDURE IF EXISTS get_albumData;
+
+
+
+CAll get_albumData('The Low End Theory');
+
+CREATE VIEW getTrackData AS
+  SELECT track.trackId, track.trackName, act.actName, track.trackLength, track.fileUrl, album.albumTitle
+  FROM track
+JOIN albumTrack a on track.trackId = a.albumTrackT_id
+  JOIN act ON track.trackActId = act.actId
+JOIN album on a.albumTrackA_id = album.albumId and act.actId = album.albumActId;
+
+
+SELECT * FROM getTrackData;
+
+SELECT * FROM playlist;
+
+SELECT * FROM act;
+
+SELECT * FROM album;
+
+
+UPDATE playlist SET playlist.playlistName = 'new house'
+WHERE playlist.playlistName = 'good house';
+
+UPDATE track SET track.fileUrl = '/High_Life.mp3'
+WHERE track.fileUrl = '/High%20Life.mp3';
+
+UPDATE album SET album.albumCoverUrl = '/paranoid.jpg'
+WHERE album.albumTitle = 'Paranoid';
+
+
+SELECT * FROM album WHERE albumTitle = 'The Low End Theory';
